@@ -25,6 +25,7 @@ Can you do format proofs of your python programs, and discover things like if th
 
 Now I will go over some of these problems and give examples of how you can statically check for them.  I will show which tools work, and which tools do not work for these problems.
 
+Want to download the code?  You can follow along at this github link: [https://github.com/illume/static_checking_python](https://github.com/illume/static_checking_python)
 
 # Implements an interface
 
@@ -97,9 +98,13 @@ W: 38, 0: Method 'move' is abstract in class 'Birds' but is not overridden (abst
 W: 38, 0: Method 'noise' is abstract in class 'Birds' but is not overridden (abstract-method)
 ```
 
+Here we see that pylint detects that we have not implemented the noise and move methods... because we made a typo.
+
 
 ## implementsinterface2.py
 
+
+In this file I correct the typo, and rerun pylint.
 
 Here pylint can find that we are correctly implemented the required methods.
 
@@ -188,7 +193,7 @@ Pylint does not find this error.
 
 However, PyCharm shows the error.  It says "Expected type 'str | unicode', got 'int' instead."
 
-Note that pylint found these problems with the code:
+Note that although pylint did not find this error, it found these problems with the code:
 
 ```
 (anenv)shit-robot:staticchecking rene$ pylint typeerror2.py 
@@ -288,9 +293,8 @@ doduck()
 By adding the return type into the doc string of the typeerrorsupport.number_of_quacks() function
 we see that PyCharm can detect the TypeError.
 
-If you follow the reST field lists, PyCharm (and other tools) can use that type information.
+If you follow the [reST field lists](http://sphinx-doc.org/domains.html#info-field-lists), PyCharm (and other tools) can use that type information.
 
-You can see the field lists here: http://sphinx-doc.org/domains.html#info-field-lists
 
 ## typeerrorsupport.py
 
